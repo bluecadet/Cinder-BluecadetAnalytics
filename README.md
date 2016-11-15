@@ -52,7 +52,7 @@ string clientId = boost::uuids::to_string(boost::uuids::random_generator()());
 If your app only tracks as a single user, you can just use  the shared instance with your GA ID and client ID. All hits sent to GA will track under the same unique user.
 
 ```c++
-AnalyticsClient::getInstance()->setup(gaId, clientId, appName, appVersion);
+AnalyticsClient::getInstance()->setup(clientId, gaId, appName, appVersion);
 AnalyticsClient::getInstance()->trackEvent("Test Category", "Test Action");
 AnalyticsClient::getInstance()->trackEvent("Test Category", "Test Action");
 AnalyticsClient::getInstance()->trackEvent("Test Category", "Test Action");
@@ -71,9 +71,9 @@ mClientA = AnalyticsClientRef(new AnalyticsClient());
 mClientB = AnalyticsClientRef(new AnalyticsClient());
 mClientC = AnalyticsClientRef(new AnalyticsClient());
 
-mClientA->setup(gaId, clientIdA, appName, appVersion);
-mClientB->setup(gaId, clientIdB, appName, appVersion);
-mClientC->setup(gaId, clientIdC, appName, appVersion);
+mClientA->setup(clientIdA, gaId, appName, appVersion);
+mClientB->setup(clientIdB, gaId, appName, appVersion);
+mClientC->setup(clientIdC, gaId, appName, appVersion);
 
 mClientA->trackEvent("Test Category", "Test Action");
 mClientB->trackEvent("Test Category", "Test Action");
