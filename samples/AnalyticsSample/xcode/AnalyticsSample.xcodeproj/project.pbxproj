@@ -1,0 +1,597 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		006D720419952D00008149E2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 006D720219952D00008149E2 /* AVFoundation.framework */; };
+		006D720519952D00008149E2 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 006D720319952D00008149E2 /* CoreMedia.framework */; };
+		0091D8F90E81B9330029341E /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0091D8F80E81B9330029341E /* OpenGL.framework */; };
+		00B784B30FF439BC000DE1D7 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784AF0FF439BC000DE1D7 /* Accelerate.framework */; };
+		00B784B40FF439BC000DE1D7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784B00FF439BC000DE1D7 /* AudioToolbox.framework */; };
+		00B784B50FF439BC000DE1D7 /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784B10FF439BC000DE1D7 /* AudioUnit.framework */; };
+		00B784B60FF439BC000DE1D7 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784B20FF439BC000DE1D7 /* CoreAudio.framework */; };
+		00B9955A1B128DF400A5C623 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B995581B128DF400A5C623 /* IOKit.framework */; };
+		00B9955B1B128DF400A5C623 /* IOSurface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B995591B128DF400A5C623 /* IOSurface.framework */; };
+		096882109CD7491E9246ACA3 /* UdpServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3B14EF78D0BD4B8399171A52 /* UdpServer.cpp */; };
+		0A099261AF554214A58E1907 /* HttpRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 21B231A167DC42C7AC1E9322 /* HttpRequest.cpp */; };
+		1132225BFFC64818A653F1B9 /* HttpInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50E276138E7041D49A5B0DD6 /* HttpInterface.cpp */; };
+		1E84A79B229B404EB84751A3 /* ServerInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 71FE0A1BF92544E8B57E4592 /* ServerInterface.cpp */; };
+		2357A5A836CE47B194F1349A /* FtpResponse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52C5F4404C904690B7845EE2 /* FtpResponse.cpp */; };
+		371F9856ABD6416F85690AF2 /* TcpServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 997F85E41E50419594A07721 /* TcpServer.cpp */; };
+		39928BF3169441F9ABE52B74 /* DispatcherInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A12B1A567394D758A7A941D /* DispatcherInterface.cpp */; };
+		3F8B383A8A88418095BC6CA0 /* GAHit.hpp in Sources */ = {isa = PBXBuildFile; fileRef = AB288D3956A246FE979A30C1 /* GAHit.hpp */; };
+		4049AA39A4DC4F4DA6F7F170 /* GAEvent.hpp in Sources */ = {isa = PBXBuildFile; fileRef = AAF0455E0E5840E48AC0405B /* GAEvent.hpp */; };
+		4315753DBDC44D59B32C955C /* CinderApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = B2680C2EA981480DBF60978F /* CinderApp.icns */; };
+		5323E6B20EAFCA74003A9687 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B10EAFCA74003A9687 /* CoreVideo.framework */; };
+		6C568B50EA0246F6B0095BFA /* ClientInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AF65708825F9447D81FF6160 /* ClientInterface.cpp */; };
+		6E58FC9BD794472CACE9B070 /* UdpClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D27E0BFEFCF3479390CAC558 /* UdpClient.cpp */; };
+		6EE2313D740F49A097A4A234 /* FtpRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E7B6A4796584478AE05C542 /* FtpRequest.cpp */; };
+		766E8C7392AC4D0789B60A30 /* GABatch.hpp in Sources */ = {isa = PBXBuildFile; fileRef = BE765233468342A48B97291E /* GABatch.hpp */; };
+		7A6FF15B830745FEAAC0835D /* GAScreenView.hpp in Sources */ = {isa = PBXBuildFile; fileRef = EBFC9797B0BE490581AABA35 /* GAScreenView.hpp */; };
+		848822AEA1F74AC18F45DF07 /* HttpResponse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D55CA42EA738421EA660F126 /* HttpResponse.cpp */; };
+		864115F18ACB47CA85EAD254 /* TcpClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E22BC1ED406425BBE0EE394 /* TcpClient.cpp */; };
+		86C8CFCE93474F1DBA73FFC0 /* ThreadManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAA08C2D7784475796301D1F /* ThreadManager.cpp */; };
+		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		8D4CF14E318B45AE9B326E71 /* SessionInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68DC14C02FBB4AB68A4E3C3C /* SessionInterface.cpp */; };
+		9325C22B6C7F4DE5901E60E4 /* BodyInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 245849EF0634437296159A94 /* BodyInterface.cpp */; };
+		A07DC6A2AE064F03B49EF77E /* HeaderInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C933AE947B446FBB7141013 /* HeaderInterface.cpp */; };
+		B52F159CAAD94867ACAEAD27 /* UrlRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 803B5A8A42F34003BE283BF7 /* UrlRequest.cpp */; };
+		BB0F00D5B51A4BDDBA2895A0 /* ProtocolInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C52DF568674412CBDD30A45 /* ProtocolInterface.cpp */; };
+		C00ACF85EBF84BA7AD9C20F7 /* TcpSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 548FE94614C74BEBA27208F6 /* TcpSession.cpp */; };
+		D1FC45C087634EC781601807 /* AnalyticsClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBE3062CB32F4E2983A558B2 /* AnalyticsClient.cpp */; };
+		D442955715804CB89648C49D /* UdpSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BDF10B277EB49E0B400653E /* UdpSession.cpp */; };
+		E21632C350AE4E3E8271A502 /* KeyValuePairInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86BE3131584D4CB09FC1C015 /* KeyValuePairInterface.cpp */; };
+		F1BB2B0D10B845488C33C337 /* AnalyticsSampleApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4106AEE8EF8E43D884048588 /* AnalyticsSampleApp.cpp */; };
+		F9B636CDD80646A3A1F43927 /* FtpInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93FF1FC761F64572B39E8D1A /* FtpInterface.cpp */; };
+		FB8DC962B3BA4C21980CF921 /* WaitTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A0404E3EF904CA58C715D74 /* WaitTimer.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		006D720219952D00008149E2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		006D720319952D00008149E2 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		0091D8F80E81B9330029341E /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
+		00B784AF0FF439BC000DE1D7 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		00B784B00FF439BC000DE1D7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		00B784B10FF439BC000DE1D7 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
+		00B784B20FF439BC000DE1D7 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		00B995581B128DF400A5C623 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		00B995591B128DF400A5C623 /* IOSurface.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOSurface.framework; path = System/Library/Frameworks/IOSurface.framework; sourceTree = SDKROOT; };
+		07203A9597034650BDD706FC /* ServerEventHandlerInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ServerEventHandlerInterface.h; path = "../../../../Cinder-Asio/src/ServerEventHandlerInterface.h"; sourceTree = "<group>"; };
+		0E3734305BD540389E86B52B /* FtpRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FtpRequest.h; path = ../../../src/bantherewind/protocol/FtpRequest.h; sourceTree = "<group>"; };
+		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		1A0404E3EF904CA58C715D74 /* WaitTimer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = WaitTimer.cpp; path = "../../../../Cinder-Asio/src/WaitTimer.cpp"; sourceTree = "<group>"; };
+		21B231A167DC42C7AC1E9322 /* HttpRequest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = HttpRequest.cpp; path = ../../../src/bantherewind/protocol/HttpRequest.cpp; sourceTree = "<group>"; };
+		245849EF0634437296159A94 /* BodyInterface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = BodyInterface.cpp; path = ../../../src/bantherewind/protocol/BodyInterface.cpp; sourceTree = "<group>"; };
+		254AC938B5C34CE0B1CF03A0 /* CinderAsio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CinderAsio.h; path = "../../../../Cinder-Asio/src/CinderAsio.h"; sourceTree = "<group>"; };
+		286B1ACCC8DA4B238205DF49 /* UrlRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UrlRequest.h; path = ../../../src/bluecadet/analytics/utils/UrlRequest.h; sourceTree = "<group>"; };
+		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		2C933AE947B446FBB7141013 /* HeaderInterface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = HeaderInterface.cpp; path = ../../../src/bantherewind/protocol/HeaderInterface.cpp; sourceTree = "<group>"; };
+		2E22BC1ED406425BBE0EE394 /* TcpClient.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = TcpClient.cpp; path = "../../../../Cinder-Asio/src/TcpClient.cpp"; sourceTree = "<group>"; };
+		2E7B6A4796584478AE05C542 /* FtpRequest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = FtpRequest.cpp; path = ../../../src/bantherewind/protocol/FtpRequest.cpp; sourceTree = "<group>"; };
+		34C0F4FF80474DB189F1395E /* BodyInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BodyInterface.h; path = ../../../src/bantherewind/protocol/BodyInterface.h; sourceTree = "<group>"; };
+		3B14EF78D0BD4B8399171A52 /* UdpServer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = UdpServer.cpp; path = "../../../../Cinder-Asio/src/UdpServer.cpp"; sourceTree = "<group>"; };
+		3C4AE64254A049F49C7B0F9E /* TcpSession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TcpSession.h; path = "../../../../Cinder-Asio/src/TcpSession.h"; sourceTree = "<group>"; };
+		4106AEE8EF8E43D884048588 /* AnalyticsSampleApp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = AnalyticsSampleApp.cpp; path = ../src/AnalyticsSampleApp.cpp; sourceTree = "<group>"; };
+		4601FBDA431848C8B4250B6C /* HttpInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HttpInterface.h; path = ../../../src/bantherewind/protocol/HttpInterface.h; sourceTree = "<group>"; };
+		46C4396D5CC74FAEB7F5E932 /* TcpSessionEventHandlerInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TcpSessionEventHandlerInterface.h; path = "../../../../Cinder-Asio/src/TcpSessionEventHandlerInterface.h"; sourceTree = "<group>"; };
+		4B3FC98B1A254EA38D923E59 /* HttpResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HttpResponse.h; path = ../../../src/bantherewind/protocol/HttpResponse.h; sourceTree = "<group>"; };
+		4C52DF568674412CBDD30A45 /* ProtocolInterface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = ProtocolInterface.cpp; path = ../../../src/bantherewind/protocol/ProtocolInterface.cpp; sourceTree = "<group>"; };
+		4DA4973354D04E18A6FDA07E /* DispatcherEventHandlerInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DispatcherEventHandlerInterface.h; path = "../../../../Cinder-Asio/src/DispatcherEventHandlerInterface.h"; sourceTree = "<group>"; };
+		50E276138E7041D49A5B0DD6 /* HttpInterface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = HttpInterface.cpp; path = ../../../src/bantherewind/protocol/HttpInterface.cpp; sourceTree = "<group>"; };
+		52C5F4404C904690B7845EE2 /* FtpResponse.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = FtpResponse.cpp; path = ../../../src/bantherewind/protocol/FtpResponse.cpp; sourceTree = "<group>"; };
+		5323E6B10EAFCA74003A9687 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
+		548FE94614C74BEBA27208F6 /* TcpSession.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = TcpSession.cpp; path = "../../../../Cinder-Asio/src/TcpSession.cpp"; sourceTree = "<group>"; };
+		55A0EC0A5A984F42A240B646 /* DispatcherInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DispatcherInterface.h; path = "../../../../Cinder-Asio/src/DispatcherInterface.h"; sourceTree = "<group>"; };
+		5A12B1A567394D758A7A941D /* DispatcherInterface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = DispatcherInterface.cpp; path = "../../../../Cinder-Asio/src/DispatcherInterface.cpp"; sourceTree = "<group>"; };
+		5BDF10B277EB49E0B400653E /* UdpSession.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = UdpSession.cpp; path = "../../../../Cinder-Asio/src/UdpSession.cpp"; sourceTree = "<group>"; };
+		5CCD6414E0B1422AB9510C68 /* ThreadManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ThreadManager.h; path = ../../../src/bluecadet/analytics/utils/ThreadManager.h; sourceTree = "<group>"; };
+		6326EECF95F24B908252AABF /* WaitTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WaitTimer.h; path = "../../../../Cinder-Asio/src/WaitTimer.h"; sourceTree = "<group>"; };
+		64B9CEDD4D884A61B19E1C92 /* TcpClientEventHandlerInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TcpClientEventHandlerInterface.h; path = "../../../../Cinder-Asio/src/TcpClientEventHandlerInterface.h"; sourceTree = "<group>"; };
+		650AF5A1395046AD932B616B /* UdpServerEventHandlerInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UdpServerEventHandlerInterface.h; path = "../../../../Cinder-Asio/src/UdpServerEventHandlerInterface.h"; sourceTree = "<group>"; };
+		68B71081654E4EB09F39E62F /* ProtocolInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ProtocolInterface.h; path = ../../../src/bantherewind/protocol/ProtocolInterface.h; sourceTree = "<group>"; };
+		68DC14C02FBB4AB68A4E3C3C /* SessionInterface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = SessionInterface.cpp; path = "../../../../Cinder-Asio/src/SessionInterface.cpp"; sourceTree = "<group>"; };
+		71FE0A1BF92544E8B57E4592 /* ServerInterface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = ServerInterface.cpp; path = "../../../../Cinder-Asio/src/ServerInterface.cpp"; sourceTree = "<group>"; };
+		803B5A8A42F34003BE283BF7 /* UrlRequest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = UrlRequest.cpp; path = ../../../src/bluecadet/analytics/utils/UrlRequest.cpp; sourceTree = "<group>"; };
+		807DA79C1ABD46E38CFAE6B4 /* SessionEventHandlerInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SessionEventHandlerInterface.h; path = "../../../../Cinder-Asio/src/SessionEventHandlerInterface.h"; sourceTree = "<group>"; };
+		83423DF82027429D9CDD8411 /* TcpClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TcpClient.h; path = "../../../../Cinder-Asio/src/TcpClient.h"; sourceTree = "<group>"; };
+		86BE3131584D4CB09FC1C015 /* KeyValuePairInterface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = KeyValuePairInterface.cpp; path = ../../../src/bantherewind/protocol/KeyValuePairInterface.cpp; sourceTree = "<group>"; };
+		8C715CA024DA48A9B05C6852 /* UdpSessionEventHandlerInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UdpSessionEventHandlerInterface.h; path = "../../../../Cinder-Asio/src/UdpSessionEventHandlerInterface.h"; sourceTree = "<group>"; };
+		8CDC0BD1E27045578739E46B /* TcpServerEventHandlerInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TcpServerEventHandlerInterface.h; path = "../../../../Cinder-Asio/src/TcpServerEventHandlerInterface.h"; sourceTree = "<group>"; };
+		8D1107320486CEB800E47090 /* AnalyticsSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnalyticsSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E7CBCC3F4E84D448828BAD3 /* AnalyticsSample_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; path = AnalyticsSample_Prefix.pch; sourceTree = "<group>"; };
+		91A8DFD8275F4B4DAAF69E4D /* HeaderInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HeaderInterface.h; path = ../../../src/bantherewind/protocol/HeaderInterface.h; sourceTree = "<group>"; };
+		93FF1FC761F64572B39E8D1A /* FtpInterface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = FtpInterface.cpp; path = ../../../src/bantherewind/protocol/FtpInterface.cpp; sourceTree = "<group>"; };
+		94D97B237F6543DF97BAF074 /* AnalyticsClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = AnalyticsClient.h; path = ../../../src/bluecadet/analytics/AnalyticsClient.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		997F85E41E50419594A07721 /* TcpServer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = TcpServer.cpp; path = "../../../../Cinder-Asio/src/TcpServer.cpp"; sourceTree = "<group>"; };
+		9CA3E8270D3D4160932D82BF /* UdpServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UdpServer.h; path = "../../../../Cinder-Asio/src/UdpServer.h"; sourceTree = "<group>"; };
+		A17E9758AAF14DAD8D6D461E /* ServerInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ServerInterface.h; path = "../../../../Cinder-Asio/src/ServerInterface.h"; sourceTree = "<group>"; };
+		A19D1953FC9A4D309D90D18F /* FtpResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FtpResponse.h; path = ../../../src/bantherewind/protocol/FtpResponse.h; sourceTree = "<group>"; };
+		A524066E14094AB3A2BEB3FF /* Resources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Resources.h; path = ../include/Resources.h; sourceTree = "<group>"; };
+		AAF0455E0E5840E48AC0405B /* GAEvent.hpp */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; name = GAEvent.hpp; path = ../../../src/bluecadet/analytics/GAEvent.hpp; sourceTree = "<group>"; };
+		AB288D3956A246FE979A30C1 /* GAHit.hpp */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; name = GAHit.hpp; path = ../../../src/bluecadet/analytics/GAHit.hpp; sourceTree = "<group>"; };
+		AF65708825F9447D81FF6160 /* ClientInterface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = ClientInterface.cpp; path = "../../../../Cinder-Asio/src/ClientInterface.cpp"; sourceTree = "<group>"; };
+		B0E37EF2868147069E464A6B /* UdpSession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UdpSession.h; path = "../../../../Cinder-Asio/src/UdpSession.h"; sourceTree = "<group>"; };
+		B2680C2EA981480DBF60978F /* CinderApp.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = CinderApp.icns; path = ../resources/CinderApp.icns; sourceTree = "<group>"; };
+		B6EEC0A7C0EA4B4D8CE59E0E /* ClientInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ClientInterface.h; path = "../../../../Cinder-Asio/src/ClientInterface.h"; sourceTree = "<group>"; };
+		BE765233468342A48B97291E /* GABatch.hpp */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; name = GABatch.hpp; path = ../../../src/bluecadet/analytics/GABatch.hpp; sourceTree = "<group>"; };
+		C22A98553A85421899BDE3E9 /* WaitTimerEventHandlerInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WaitTimerEventHandlerInterface.h; path = "../../../../Cinder-Asio/src/WaitTimerEventHandlerInterface.h"; sourceTree = "<group>"; };
+		C52BC7EFF12847A0BE434608 /* UdpClientEventHandlerInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UdpClientEventHandlerInterface.h; path = "../../../../Cinder-Asio/src/UdpClientEventHandlerInterface.h"; sourceTree = "<group>"; };
+		CDCEB0329B00401C907496AB /* TcpServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TcpServer.h; path = "../../../../Cinder-Asio/src/TcpServer.h"; sourceTree = "<group>"; };
+		D09A77C8AC16431380C41862 /* HttpRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HttpRequest.h; path = ../../../src/bantherewind/protocol/HttpRequest.h; sourceTree = "<group>"; };
+		D27E0BFEFCF3479390CAC558 /* UdpClient.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = UdpClient.cpp; path = "../../../../Cinder-Asio/src/UdpClient.cpp"; sourceTree = "<group>"; };
+		D382D0DEA517484A950D38F6 /* FtpInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FtpInterface.h; path = ../../../src/bantherewind/protocol/FtpInterface.h; sourceTree = "<group>"; };
+		D55CA42EA738421EA660F126 /* HttpResponse.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = HttpResponse.cpp; path = ../../../src/bantherewind/protocol/HttpResponse.cpp; sourceTree = "<group>"; };
+		DBE3062CB32F4E2983A558B2 /* AnalyticsClient.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; lineEnding = 0; name = AnalyticsClient.cpp; path = ../../../src/bluecadet/analytics/AnalyticsClient.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
+		DE44094B2900468E8DD74DB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9597FD6C620414A9A41B87F /* KeyValuePairInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KeyValuePairInterface.h; path = ../../../src/bantherewind/protocol/KeyValuePairInterface.h; sourceTree = "<group>"; };
+		EBFC9797B0BE490581AABA35 /* GAScreenView.hpp */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; name = GAScreenView.hpp; path = ../../../src/bluecadet/analytics/GAScreenView.hpp; sourceTree = "<group>"; };
+		F50778C893BF457BBA48336A /* UdpClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UdpClient.h; path = "../../../../Cinder-Asio/src/UdpClient.h"; sourceTree = "<group>"; };
+		F576E85F3C964882B7F68E71 /* SessionInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SessionInterface.h; path = "../../../../Cinder-Asio/src/SessionInterface.h"; sourceTree = "<group>"; };
+		FAA08C2D7784475796301D1F /* ThreadManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = ThreadManager.cpp; path = ../../../src/bluecadet/analytics/utils/ThreadManager.cpp; sourceTree = "<group>"; };
+		FBF9CC177CDC4B0B8778FF8F /* ClientEventHandlerInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ClientEventHandlerInterface.h; path = "../../../../Cinder-Asio/src/ClientEventHandlerInterface.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D11072E0486CEB800E47090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				006D720419952D00008149E2 /* AVFoundation.framework in Frameworks */,
+				006D720519952D00008149E2 /* CoreMedia.framework in Frameworks */,
+				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				0091D8F90E81B9330029341E /* OpenGL.framework in Frameworks */,
+				5323E6B20EAFCA74003A9687 /* CoreVideo.framework in Frameworks */,
+				00B784B30FF439BC000DE1D7 /* Accelerate.framework in Frameworks */,
+				00B784B40FF439BC000DE1D7 /* AudioToolbox.framework in Frameworks */,
+				00B784B50FF439BC000DE1D7 /* AudioUnit.framework in Frameworks */,
+				00B784B60FF439BC000DE1D7 /* CoreAudio.framework in Frameworks */,
+				00B9955A1B128DF400A5C623 /* IOKit.framework in Frameworks */,
+				00B9955B1B128DF400A5C623 /* IOSurface.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		01B97315FEAEA392516A2CEA /* Blocks */ = {
+			isa = PBXGroup;
+			children = (
+				773B71378F3C4BEA898E9E8B /* Asio */,
+				FA7BFF0DFB014E88AD9C7AE8 /* BluecadetAnalytics */,
+			);
+			name = Blocks;
+			sourceTree = "<group>";
+		};
+		080E96DDFE201D6D7F000001 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				4106AEE8EF8E43D884048588 /* AnalyticsSampleApp.cpp */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				006D720219952D00008149E2 /* AVFoundation.framework */,
+				006D720319952D00008149E2 /* CoreMedia.framework */,
+				00B784AF0FF439BC000DE1D7 /* Accelerate.framework */,
+				00B784B00FF439BC000DE1D7 /* AudioToolbox.framework */,
+				00B784B10FF439BC000DE1D7 /* AudioUnit.framework */,
+				00B784B20FF439BC000DE1D7 /* CoreAudio.framework */,
+				5323E6B10EAFCA74003A9687 /* CoreVideo.framework */,
+				0091D8F80E81B9330029341E /* OpenGL.framework */,
+				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+				00B995581B128DF400A5C623 /* IOKit.framework */,
+				00B995591B128DF400A5C623 /* IOSurface.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
+				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D1107320486CEB800E47090 /* AnalyticsSample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* AnalyticsSample */ = {
+			isa = PBXGroup;
+			children = (
+				01B97315FEAEA392516A2CEA /* Blocks */,
+				29B97315FDCFA39411CA2CEA /* Headers */,
+				080E96DDFE201D6D7F000001 /* Source */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = AnalyticsSample;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				A524066E14094AB3A2BEB3FF /* Resources.h */,
+				8E7CBCC3F4E84D448828BAD3 /* AnalyticsSample_Prefix.pch */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B2680C2EA981480DBF60978F /* CinderApp.icns */,
+				DE44094B2900468E8DD74DB6 /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
+				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		49D07FFCE8864AB9AE8F3AC9 /* analytics */ = {
+			isa = PBXGroup;
+			children = (
+				725FBB12E4534568951B3AA8 /* utils */,
+				DBE3062CB32F4E2983A558B2 /* AnalyticsClient.cpp */,
+				94D97B237F6543DF97BAF074 /* AnalyticsClient.h */,
+				BE765233468342A48B97291E /* GABatch.hpp */,
+				AAF0455E0E5840E48AC0405B /* GAEvent.hpp */,
+				AB288D3956A246FE979A30C1 /* GAHit.hpp */,
+				EBFC9797B0BE490581AABA35 /* GAScreenView.hpp */,
+			);
+			name = analytics;
+			sourceTree = "<group>";
+		};
+		6B7F8AB862B04D2C9D29E08F /* src */ = {
+			isa = PBXGroup;
+			children = (
+				AF65708825F9447D81FF6160 /* ClientInterface.cpp */,
+				5A12B1A567394D758A7A941D /* DispatcherInterface.cpp */,
+				71FE0A1BF92544E8B57E4592 /* ServerInterface.cpp */,
+				68DC14C02FBB4AB68A4E3C3C /* SessionInterface.cpp */,
+				2E22BC1ED406425BBE0EE394 /* TcpClient.cpp */,
+				997F85E41E50419594A07721 /* TcpServer.cpp */,
+				548FE94614C74BEBA27208F6 /* TcpSession.cpp */,
+				D27E0BFEFCF3479390CAC558 /* UdpClient.cpp */,
+				3B14EF78D0BD4B8399171A52 /* UdpServer.cpp */,
+				5BDF10B277EB49E0B400653E /* UdpSession.cpp */,
+				1A0404E3EF904CA58C715D74 /* WaitTimer.cpp */,
+				254AC938B5C34CE0B1CF03A0 /* CinderAsio.h */,
+				FBF9CC177CDC4B0B8778FF8F /* ClientEventHandlerInterface.h */,
+				B6EEC0A7C0EA4B4D8CE59E0E /* ClientInterface.h */,
+				4DA4973354D04E18A6FDA07E /* DispatcherEventHandlerInterface.h */,
+				55A0EC0A5A984F42A240B646 /* DispatcherInterface.h */,
+				07203A9597034650BDD706FC /* ServerEventHandlerInterface.h */,
+				A17E9758AAF14DAD8D6D461E /* ServerInterface.h */,
+				807DA79C1ABD46E38CFAE6B4 /* SessionEventHandlerInterface.h */,
+				F576E85F3C964882B7F68E71 /* SessionInterface.h */,
+				83423DF82027429D9CDD8411 /* TcpClient.h */,
+				64B9CEDD4D884A61B19E1C92 /* TcpClientEventHandlerInterface.h */,
+				CDCEB0329B00401C907496AB /* TcpServer.h */,
+				8CDC0BD1E27045578739E46B /* TcpServerEventHandlerInterface.h */,
+				3C4AE64254A049F49C7B0F9E /* TcpSession.h */,
+				46C4396D5CC74FAEB7F5E932 /* TcpSessionEventHandlerInterface.h */,
+				F50778C893BF457BBA48336A /* UdpClient.h */,
+				C52BC7EFF12847A0BE434608 /* UdpClientEventHandlerInterface.h */,
+				9CA3E8270D3D4160932D82BF /* UdpServer.h */,
+				650AF5A1395046AD932B616B /* UdpServerEventHandlerInterface.h */,
+				B0E37EF2868147069E464A6B /* UdpSession.h */,
+				8C715CA024DA48A9B05C6852 /* UdpSessionEventHandlerInterface.h */,
+				6326EECF95F24B908252AABF /* WaitTimer.h */,
+				C22A98553A85421899BDE3E9 /* WaitTimerEventHandlerInterface.h */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		725FBB12E4534568951B3AA8 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				FAA08C2D7784475796301D1F /* ThreadManager.cpp */,
+				5CCD6414E0B1422AB9510C68 /* ThreadManager.h */,
+				803B5A8A42F34003BE283BF7 /* UrlRequest.cpp */,
+				286B1ACCC8DA4B238205DF49 /* UrlRequest.h */,
+			);
+			name = utils;
+			sourceTree = "<group>";
+		};
+		76D70F22468A46A997EC7A52 /* bluecadet */ = {
+			isa = PBXGroup;
+			children = (
+				49D07FFCE8864AB9AE8F3AC9 /* analytics */,
+			);
+			name = bluecadet;
+			sourceTree = "<group>";
+		};
+		773B71378F3C4BEA898E9E8B /* Asio */ = {
+			isa = PBXGroup;
+			children = (
+				6B7F8AB862B04D2C9D29E08F /* src */,
+			);
+			name = Asio;
+			sourceTree = "<group>";
+		};
+		87D0C02D88A94210B48D42A2 /* bantherewind */ = {
+			isa = PBXGroup;
+			children = (
+				CBB991CB71184AB8A8799F88 /* protocol */,
+			);
+			name = bantherewind;
+			sourceTree = "<group>";
+		};
+		9CE2EE6D5DCF4F8DBA4137DE /* src */ = {
+			isa = PBXGroup;
+			children = (
+				76D70F22468A46A997EC7A52 /* bluecadet */,
+				87D0C02D88A94210B48D42A2 /* bantherewind */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		CBB991CB71184AB8A8799F88 /* protocol */ = {
+			isa = PBXGroup;
+			children = (
+				34C0F4FF80474DB189F1395E /* BodyInterface.h */,
+				D382D0DEA517484A950D38F6 /* FtpInterface.h */,
+				0E3734305BD540389E86B52B /* FtpRequest.h */,
+				A19D1953FC9A4D309D90D18F /* FtpResponse.h */,
+				91A8DFD8275F4B4DAAF69E4D /* HeaderInterface.h */,
+				4601FBDA431848C8B4250B6C /* HttpInterface.h */,
+				D09A77C8AC16431380C41862 /* HttpRequest.h */,
+				4B3FC98B1A254EA38D923E59 /* HttpResponse.h */,
+				E9597FD6C620414A9A41B87F /* KeyValuePairInterface.h */,
+				68B71081654E4EB09F39E62F /* ProtocolInterface.h */,
+				245849EF0634437296159A94 /* BodyInterface.cpp */,
+				93FF1FC761F64572B39E8D1A /* FtpInterface.cpp */,
+				2E7B6A4796584478AE05C542 /* FtpRequest.cpp */,
+				52C5F4404C904690B7845EE2 /* FtpResponse.cpp */,
+				2C933AE947B446FBB7141013 /* HeaderInterface.cpp */,
+				50E276138E7041D49A5B0DD6 /* HttpInterface.cpp */,
+				21B231A167DC42C7AC1E9322 /* HttpRequest.cpp */,
+				D55CA42EA738421EA660F126 /* HttpResponse.cpp */,
+				86BE3131584D4CB09FC1C015 /* KeyValuePairInterface.cpp */,
+				4C52DF568674412CBDD30A45 /* ProtocolInterface.cpp */,
+			);
+			name = protocol;
+			sourceTree = "<group>";
+		};
+		FA7BFF0DFB014E88AD9C7AE8 /* BluecadetAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				9CE2EE6D5DCF4F8DBA4137DE /* src */,
+			);
+			name = BluecadetAnalytics;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D1107260486CEB800E47090 /* AnalyticsSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "AnalyticsSample" */;
+			buildPhases = (
+				8D1107290486CEB800E47090 /* Resources */,
+				8D11072C0486CEB800E47090 /* Sources */,
+				8D11072E0486CEB800E47090 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AnalyticsSample;
+			productInstallPath = "$(HOME)/Applications";
+			productName = AnalyticsSample;
+			productReference = 8D1107320486CEB800E47090 /* AnalyticsSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+			};
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "AnalyticsSample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* AnalyticsSample */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D1107260486CEB800E47090 /* AnalyticsSample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D1107290486CEB800E47090 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4315753DBDC44D59B32C955C /* CinderApp.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D11072C0486CEB800E47090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1BB2B0D10B845488C33C337 /* AnalyticsSampleApp.cpp in Sources */,
+				6C568B50EA0246F6B0095BFA /* ClientInterface.cpp in Sources */,
+				39928BF3169441F9ABE52B74 /* DispatcherInterface.cpp in Sources */,
+				1E84A79B229B404EB84751A3 /* ServerInterface.cpp in Sources */,
+				8D4CF14E318B45AE9B326E71 /* SessionInterface.cpp in Sources */,
+				864115F18ACB47CA85EAD254 /* TcpClient.cpp in Sources */,
+				371F9856ABD6416F85690AF2 /* TcpServer.cpp in Sources */,
+				C00ACF85EBF84BA7AD9C20F7 /* TcpSession.cpp in Sources */,
+				6E58FC9BD794472CACE9B070 /* UdpClient.cpp in Sources */,
+				096882109CD7491E9246ACA3 /* UdpServer.cpp in Sources */,
+				D442955715804CB89648C49D /* UdpSession.cpp in Sources */,
+				FB8DC962B3BA4C21980CF921 /* WaitTimer.cpp in Sources */,
+				D1FC45C087634EC781601807 /* AnalyticsClient.cpp in Sources */,
+				766E8C7392AC4D0789B60A30 /* GABatch.hpp in Sources */,
+				4049AA39A4DC4F4DA6F7F170 /* GAEvent.hpp in Sources */,
+				3F8B383A8A88418095BC6CA0 /* GAHit.hpp in Sources */,
+				7A6FF15B830745FEAAC0835D /* GAScreenView.hpp in Sources */,
+				86C8CFCE93474F1DBA73FFC0 /* ThreadManager.cpp in Sources */,
+				B52F159CAAD94867ACAEAD27 /* UrlRequest.cpp in Sources */,
+				9325C22B6C7F4DE5901E60E4 /* BodyInterface.cpp in Sources */,
+				F9B636CDD80646A3A1F43927 /* FtpInterface.cpp in Sources */,
+				6EE2313D740F49A097A4A234 /* FtpRequest.cpp in Sources */,
+				2357A5A836CE47B194F1349A /* FtpResponse.cpp in Sources */,
+				A07DC6A2AE064F03B49EF77E /* HeaderInterface.cpp in Sources */,
+				1132225BFFC64818A653F1B9 /* HttpInterface.cpp in Sources */,
+				0A099261AF554214A58E1907 /* HttpRequest.cpp in Sources */,
+				848822AEA1F74AC18F45DF07 /* HttpResponse.cpp in Sources */,
+				E21632C350AE4E3E8271A502 /* KeyValuePairInterface.cpp in Sources */,
+				BB0F00D5B51A4BDDBA2895A0 /* ProtocolInterface.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C01FCF4B08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = AnalyticsSample_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = "\"$(CINDER_PATH)/lib/libcinder_d.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.libcinder.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = AnalyticsSample;
+				SYMROOT = ./build;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C01FCF4C08A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_FAST_MATH = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = AnalyticsSample_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"NDEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = "\"$(CINDER_PATH)/lib/libcinder.a\"";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.libcinder.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = AnalyticsSample;
+				STRIP_INSTALLED_PRODUCT = YES;
+				SYMROOT = ./build;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CINDER_PATH = ../../../../..;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++11";
+				CLANG_CXX_LIBRARY = "libc++";
+				ENABLE_TESTABILITY = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include \"../../../../Cinder-Asio/src\" ../../../src";
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CINDER_PATH = ../../../../..;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++11";
+				CLANG_CXX_LIBRARY = "libc++";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include \"../../../../Cinder-Asio/src\" ../../../src";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "AnalyticsSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4B08A954540054247B /* Debug */,
+				C01FCF4C08A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "AnalyticsSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

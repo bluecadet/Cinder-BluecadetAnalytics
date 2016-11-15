@@ -1,0 +1,264 @@
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{B1D28554-613B-4689-9371-1974EF249F87}</ProjectGuid>
+    <RootNamespace>AnalyticsSample</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\include;"..\..\..\..\..\include";..\..\..\..\Cinder-Asio\src;..\..\..\src</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WIN32_WINNT=0x0601;_WINDOWS;NOMINMAX;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>"..\..\..\..\..\include";..\include</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>cinder-$(PlatformToolset)_d.lib;OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>"..\..\..\..\..\lib\msw\$(PlatformTarget)"</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+      <IgnoreSpecificDefaultLibraries>LIBCMT;LIBCPMT</IgnoreSpecificDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\include;"..\..\..\..\..\include";..\..\..\..\Cinder-Asio\src;..\..\..\src</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WIN32_WINNT=0x0601;_WINDOWS;NOMINMAX;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>"..\..\..\..\..\include";..\include</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>cinder-$(PlatformToolset)_d.lib;OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>"..\..\..\..\..\lib\msw\$(PlatformTarget)"</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <IgnoreSpecificDefaultLibraries>LIBCMT;LIBCPMT</IgnoreSpecificDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\include;"..\..\..\..\..\include";..\..\..\..\Cinder-Asio\src;..\..\..\src</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WIN32_WINNT=0x0601;_WINDOWS;NOMINMAX;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>"..\..\..\..\..\include";..\include</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>cinder-$(PlatformToolset).lib;OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>"..\..\..\..\..\lib\msw\$(PlatformTarget)"</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding />
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\include;"..\..\..\..\..\include";..\..\..\..\Cinder-Asio\src;..\..\..\src</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WIN32_WINNT=0x0601;_WINDOWS;NOMINMAX;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>"..\..\..\..\..\include";..\include</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>cinder-$(PlatformToolset).lib;OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>"..\..\..\..\..\lib\msw\$(PlatformTarget)"</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding />
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resources.rc" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup />
+  <ItemGroup>
+    <ClCompile Include="..\src\AnalyticsSampleApp.cpp" />
+    <ClCompile Include="..\..\..\..\Cinder-Asio\src\ClientInterface.cpp" />
+    <ClCompile Include="..\..\..\..\Cinder-Asio\src\DispatcherInterface.cpp" />
+    <ClCompile Include="..\..\..\..\Cinder-Asio\src\ServerInterface.cpp" />
+    <ClCompile Include="..\..\..\..\Cinder-Asio\src\SessionInterface.cpp" />
+    <ClCompile Include="..\..\..\..\Cinder-Asio\src\TcpClient.cpp" />
+    <ClCompile Include="..\..\..\..\Cinder-Asio\src\TcpServer.cpp" />
+    <ClCompile Include="..\..\..\..\Cinder-Asio\src\TcpSession.cpp" />
+    <ClCompile Include="..\..\..\..\Cinder-Asio\src\UdpClient.cpp" />
+    <ClCompile Include="..\..\..\..\Cinder-Asio\src\UdpServer.cpp" />
+    <ClCompile Include="..\..\..\..\Cinder-Asio\src\UdpSession.cpp" />
+    <ClCompile Include="..\..\..\..\Cinder-Asio\src\WaitTimer.cpp" />
+    <ClCompile Include="..\..\..\src\bluecadet\analytics\AnalyticsClient.cpp" />
+    <ClCompile Include="..\..\..\src\bluecadet\analytics\GABatch.hpp" />
+    <ClCompile Include="..\..\..\src\bluecadet\analytics\GAEvent.hpp" />
+    <ClCompile Include="..\..\..\src\bluecadet\analytics\GAHit.hpp" />
+    <ClCompile Include="..\..\..\src\bluecadet\analytics\GAScreenView.hpp" />
+    <ClCompile Include="..\..\..\src\bluecadet\analytics\utils\ThreadManager.cpp" />
+    <ClCompile Include="..\..\..\src\bluecadet\analytics\utils\UrlRequest.cpp" />
+    <ClCompile Include="..\..\..\src\bantherewind\protocol\BodyInterface.cpp" />
+    <ClCompile Include="..\..\..\src\bantherewind\protocol\FtpInterface.cpp" />
+    <ClCompile Include="..\..\..\src\bantherewind\protocol\FtpRequest.cpp" />
+    <ClCompile Include="..\..\..\src\bantherewind\protocol\FtpResponse.cpp" />
+    <ClCompile Include="..\..\..\src\bantherewind\protocol\HeaderInterface.cpp" />
+    <ClCompile Include="..\..\..\src\bantherewind\protocol\HttpInterface.cpp" />
+    <ClCompile Include="..\..\..\src\bantherewind\protocol\HttpRequest.cpp" />
+    <ClCompile Include="..\..\..\src\bantherewind\protocol\HttpResponse.cpp" />
+    <ClCompile Include="..\..\..\src\bantherewind\protocol\KeyValuePairInterface.cpp" />
+    <ClCompile Include="..\..\..\src\bantherewind\protocol\ProtocolInterface.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\Resources.h" />
+    <ClInclude Include="..\..\..\..\Cinder-Asio\src\CinderAsio.h" />
+    <ClInclude Include="..\..\..\..\Cinder-Asio\src\ClientEventHandlerInterface.h" />
+    <ClInclude Include="..\..\..\..\Cinder-Asio\src\ClientInterface.h" />
+    <ClInclude Include="..\..\..\..\Cinder-Asio\src\DispatcherEventHandlerInterface.h" />
+    <ClInclude Include="..\..\..\..\Cinder-Asio\src\DispatcherInterface.h" />
+    <ClInclude Include="..\..\..\..\Cinder-Asio\src\ServerEventHandlerInterface.h" />
+    <ClInclude Include="..\..\..\..\Cinder-Asio\src\ServerInterface.h" />
+    <ClInclude Include="..\..\..\..\Cinder-Asio\src\SessionEventHandlerInterface.h" />
+    <ClInclude Include="..\..\..\..\Cinder-Asio\src\SessionInterface.h" />
+    <ClInclude Include="..\..\..\..\Cinder-Asio\src\TcpClient.h" />
+    <ClInclude Include="..\..\..\..\Cinder-Asio\src\TcpClientEventHandlerInterface.h" />
+    <ClInclude Include="..\..\..\..\Cinder-Asio\src\TcpServer.h" />
+    <ClInclude Include="..\..\..\..\Cinder-Asio\src\TcpServerEventHandlerInterface.h" />
+    <ClInclude Include="..\..\..\..\Cinder-Asio\src\TcpSession.h" />
+    <ClInclude Include="..\..\..\..\Cinder-Asio\src\TcpSessionEventHandlerInterface.h" />
+    <ClInclude Include="..\..\..\..\Cinder-Asio\src\UdpClient.h" />
+    <ClInclude Include="..\..\..\..\Cinder-Asio\src\UdpClientEventHandlerInterface.h" />
+    <ClInclude Include="..\..\..\..\Cinder-Asio\src\UdpServer.h" />
+    <ClInclude Include="..\..\..\..\Cinder-Asio\src\UdpServerEventHandlerInterface.h" />
+    <ClInclude Include="..\..\..\..\Cinder-Asio\src\UdpSession.h" />
+    <ClInclude Include="..\..\..\..\Cinder-Asio\src\UdpSessionEventHandlerInterface.h" />
+    <ClInclude Include="..\..\..\..\Cinder-Asio\src\WaitTimer.h" />
+    <ClInclude Include="..\..\..\..\Cinder-Asio\src\WaitTimerEventHandlerInterface.h" />
+    <ClInclude Include="..\..\..\src\bluecadet\analytics\AnalyticsClient.h" />
+    <ClInclude Include="..\..\..\src\bluecadet\analytics\utils\ThreadManager.h" />
+    <ClInclude Include="..\..\..\src\bluecadet\analytics\utils\UrlRequest.h" />
+    <ClInclude Include="..\..\..\src\bantherewind\protocol\BodyInterface.h" />
+    <ClInclude Include="..\..\..\src\bantherewind\protocol\FtpInterface.h" />
+    <ClInclude Include="..\..\..\src\bantherewind\protocol\FtpRequest.h" />
+    <ClInclude Include="..\..\..\src\bantherewind\protocol\FtpResponse.h" />
+    <ClInclude Include="..\..\..\src\bantherewind\protocol\HeaderInterface.h" />
+    <ClInclude Include="..\..\..\src\bantherewind\protocol\HttpInterface.h" />
+    <ClInclude Include="..\..\..\src\bantherewind\protocol\HttpRequest.h" />
+    <ClInclude Include="..\..\..\src\bantherewind\protocol\HttpResponse.h" />
+    <ClInclude Include="..\..\..\src\bantherewind\protocol\KeyValuePairInterface.h" />
+    <ClInclude Include="..\..\..\src\bantherewind\protocol\ProtocolInterface.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>

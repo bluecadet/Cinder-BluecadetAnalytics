@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<cinder>
+<block
+	name="BluecadetAnalytics"
+	id="com.bluecadet.cinder.analytics"
+	git="git@github.com:bluecadet/Cinder-BluecadetAnalytics.git"
+	author="Bluecadet"
+	summary="Google Analytics API client for Cinder"
+	license="MIT"
+	>
+
+	<requires>asio.bantherewind.com</requires>
+	
+	<headerPattern>src/bluecadet/analytics/*.h</headerPattern>
+	<sourcePattern>src/bluecadet/analytics/*.cpp</sourcePattern>
+	<sourcePattern>src/bluecadet/analytics/*.hpp</sourcePattern>
+	
+	
+	<headerPattern>src/bluecadet/analytics/utils/*.h</headerPattern>
+	<sourcePattern>src/bluecadet/analytics/utils/*.cpp</sourcePattern>
+	<sourcePattern>src/bluecadet/analytics/utils/*.hpp</sourcePattern>
+	
+	<headerPattern>src/bantherewind/protocol/*.h</headerPattern>
+	<sourcePattern>src/bantherewind/protocol/*.cpp</sourcePattern>
+	<sourcePattern>src/bantherewind/protocol/*.hpp</sourcePattern>
+	
+	<includePath>src</includePath>
+</block>
+</cinder>
