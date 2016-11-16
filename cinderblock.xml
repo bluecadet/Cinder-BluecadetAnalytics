@@ -6,7 +6,9 @@
 	git="git@github.com:bluecadet/Cinder-BluecadetAnalytics.git"
 	author="Bluecadet"
 	summary="Google Analytics API client for Cinder"
-	license="MIT"
+	license="BSD-3"
+	version="1.0.0"
+	url="https://github.com/bluecadet/Cinder-BluecadetAnalytics"
 	>
 
 	<requires>asio.bantherewind.com</requires>
@@ -22,7 +24,6 @@
 	
 	<headerPattern>src/bantherewind/protocol/*.h</headerPattern>
 	<sourcePattern>src/bantherewind/protocol/*.cpp</sourcePattern>
-	<sourcePattern>src/bantherewind/protocol/*.hpp</sourcePattern>
 	
 	<includePath>src</includePath>
 </block>
