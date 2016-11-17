@@ -68,9 +68,9 @@ public:
 	virtual ~AnalyticsClient();
 
 	
-	//! Adds manager to cinder update loop and automatically starts processing events and batches
+	//! Adds client to cinder update loop and automatically starts processing events and batches
 	//! setup() and destroy() are symmetrical and can be called repeatedly.
-	void setup(std::string gaId, std::string clientId, std::string appName, std::string appVersion = "", int numThreads = 1, double maxBatchAge = 4.0, int maxBatchesPerCycle = 8);
+	void setup(std::string clientId, std::string gaId, std::string appName, std::string appVersion = "", int numThreads = 1, double maxBatchAge = 4.0, int maxBatchesPerCycle = 8);
 	
 	//! Removes client from the update loop and clears any remaining hits.
 	//! setup() and destroy() are symmetrical and can be called repeatedly.

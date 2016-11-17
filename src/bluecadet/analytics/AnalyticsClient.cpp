@@ -57,7 +57,7 @@ AnalyticsClient::AnalyticsClient() :
 AnalyticsClient::~AnalyticsClient() {
 }
 
-void AnalyticsClient::setup(string gaId, string clientId, string appName, string appVersion, int numThreads, double maxBatchAge, int maxBatchesPerCycle) {
+void AnalyticsClient::setup(string clientId, string gaId, string appName, string appVersion, int numThreads, double maxBatchAge, int maxBatchesPerCycle) {
 	destroy();
 	
 	mAppName = appName;

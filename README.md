@@ -10,27 +10,26 @@ Tested in production on Windows 7, but also runs on MacOS and iOS. See [Google's
 * Extendable to support more hit types
 * Multi-threaded HTTP requests using [Cinder-Asio](https://github.com/BanTheRewind/Cinder-Asio) and [Protocol](https://github.com/BanTheRewind/Cinder-Protocol)
 * Offline support with automatic retries at increasing intervals
-* Configured to stay within Google Analytics quota limits
+* Configured to stay within Google Analytics [quota limits](https://developers.google.com/analytics/devguides/collection/protocol/v1/limits-quotas)
 	* Automatic session renewal
 	* Automatic hit batching
 	* Automatic cache busting
 
-## Usage
-
-```c++
-string gaId = "UA-XXXXXX"; // required
-string clientId = "..."; // required
-string appName = "My App"; // required
-
-AnalyticsClient::getInstance()->setup(gaId, clientId, appName);
-AnalyticsClient::getInstance()->trackScreenView("Test Screen");
-AnalyticsClient::getInstance()->trackEvent("Test Category", "Test Action");
-
-```
-
 ## Dependencies
 
 [Cinder-Asio](https://github.com/BanTheRewind/Cinder-Asio) is a required dependency that needs to be installed in _Cinder/blocks_. [Protocol](https://github.com/BanTheRewind/Cinder-Protocol) is included in this repo since it's not set up as a Cinder block.
+
+## Usage
+
+```c++
+string clientId = "00000000-0000-0000-0000-000000000000"; // required
+string gaId = "UA-00000000-0"; // required
+string appName = "My App"; // required
+
+AnalyticsClient::getInstance()->setup(clientId, gaId, appName);
+AnalyticsClient::getInstance()->trackScreenView("Test Screen");
+AnalyticsClient::getInstance()->trackEvent("Test Category", "Test Action");
+```
 
 ## Notes on Client ID
 
@@ -53,13 +52,15 @@ string clientId = boost::uuids::to_string(boost::uuids::random_generator()());
 If your app only tracks as a single user, you can just use  the shared instance with your GA ID and client ID. All hits sent to GA will track under the same unique user.
 
 ```c++
-AnalyticsClient::getInstance()->setup(gaId, clientId, appName, appVersion);
+AnalyticsClient::getInstance()->setup(clientId, gaId, appName, appVersion);
 AnalyticsClient::getInstance()->trackEvent("Test Category", "Test Action");
 AnalyticsClient::getInstance()->trackEvent("Test Category", "Test Action");
 AnalyticsClient::getInstance()->trackEvent("Test Category", "Test Action");
 ```
 
 This will create three event hits in total, each by the same user.
+
+See the [AnalyticsSample](samples/AnalyticsSample) project for more details.
 
 ### Multi User Mode
 
@@ -70,9 +71,9 @@ mClientA = AnalyticsClientRef(new AnalyticsClient());
 mClientB = AnalyticsClientRef(new AnalyticsClient());
 mClientC = AnalyticsClientRef(new AnalyticsClient());
 
-mClientA->setup(gaId, clientIdA, appName, appVersion);
-mClientB->setup(gaId, clientIdB, appName, appVersion);
-mClientC->setup(gaId, clientIdC, appName, appVersion);
+mClientA->setup(clientIdA, gaId, appName, appVersion);
+mClientB->setup(clientIdB, gaId, appName, appVersion);
+mClientC->setup(clientIdC, gaId, appName, appVersion);
 
 mClientA->trackEvent("Test Category", "Test Action");
 mClientB->trackEvent("Test Category", "Test Action");
@@ -80,6 +81,8 @@ mClientC->trackEvent("Test Category", "Test Action");
 ```
 
 This will create three event hits in total, each by individual users.
+
+See the [MultiUserSample](samples/MultiUserSample) project for more details.
 
 ## Notes on Error Reporting
 
