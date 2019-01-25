@@ -74,7 +74,8 @@ public:
 	
 	//! Removes client from the update loop and clears any remaining hits.
 	//! setup() and destroy() are symmetrical and can be called repeatedly.
-	void destroy();
+	//! Will process remaining batches by default. Set to false to disable.
+	void destroy(bool processRemaining = true);
 	
 	
 	
@@ -129,12 +130,15 @@ public:
 	
 protected:
 	
-	//! Determines which batches are ready for sending and sends those. Called by update().
-	void			processBatches();
+	//! Determines which batches are ready for sending and sends those asynchronously.
+	//! Called on each update() on a worker thread.
+	//! Set flush to true to synchronously process and send all remaining batches.
+	void			processBatches(bool flush = false);
 	
 	//! Attempts to send batch; Discards it on success, adds it back to front of the queue on failure.
-	
-	void			sendBatch(GABatchRef batch);
+	//! Set blocking to true to send the batch on the current thread.
+	void			sendBatch(GABatchRef batch, bool blocking = false);
+
 	//! Called by requests once they complete. Moves the batch back to the queue on failure.
 	void			handleBatchRequestCompleted(GABatchRef batch, utils::UrlRequestRef request);
 	
@@ -145,6 +149,7 @@ protected:
 	std::mutex				mRequestMutex;
 	utils::ThreadManagerRef	mThreadManager;
 	ci::signals::ScopedConnection mUpdateConnection;
+	ci::signals::ScopedConnection mCleanupConnection;
 	
 	
 	

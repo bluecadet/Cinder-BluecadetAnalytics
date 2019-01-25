@@ -58,7 +58,7 @@ AnalyticsClient::~AnalyticsClient() {
 }
 
 void AnalyticsClient::setup(string clientId, string gaId, string appName, string appVersion, int numThreads, double maxBatchAge, int maxBatchesPerCycle) {
-	destroy();
+	destroy(false);
 	
 	mAppName = appName;
 	mAppVersion = appVersion;
@@ -70,21 +70,33 @@ void AnalyticsClient::setup(string clientId, string gaId, string appName, string
 	
 	CI_LOG_I("Client set up with GA ID '" << mGaId << "' and client ID '" << mClientId << "'");
 	
-	mUpdateConnection = AppBase::get()->getSignalUpdate().connect([=] {
+	mUpdateConnection = App::get()->getSignalUpdate().connect([=] {
 		// process batches regularly on sub thread
 		mThreadManager->addTask([this] {
 			processBatches();
 		});
 	});
+
+	mCleanupConnection = App::get()->getSignalCleanup().connect([=] {
+		destroy(true);
+	});
 }
 
-void AnalyticsClient::destroy() {
+void AnalyticsClient::destroy(bool processRemaining) {
 	mThreadManager->destroy();
 	
 	if (mUpdateConnection.isConnected()) {
 		mUpdateConnection.disconnect();
 	}
+
+	if (mCleanupConnection.isConnected()) {
+		mCleanupConnection.disconnect();
+	}
 	
+	if (processRemaining) {
+		processBatches(true);
+	}
+
 	lock_guard<mutex> lock(mBatchMutex);
 	
 	mBatchQueue.clear();
@@ -144,18 +156,18 @@ void AnalyticsClient::trackHit(GAHitRef hit) {
 	});
 }
 
-void AnalyticsClient::processBatches() {
+void AnalyticsClient::processBatches(bool flush) {
 
 	lock_guard<mutex> lock(mBatchMutex);
 
 	// check if we should send the current batch
-	if (mCurrentBatch && (mCurrentBatch->isFull() || mCurrentBatch->getAge() >= mMaxBatchAge)) {
+	if (mCurrentBatch && (flush || mCurrentBatch->isFull() || mCurrentBatch->getAge() >= mMaxBatchAge)) {
 		mBatchQueue.push_back(mCurrentBatch);
 		mCurrentBatch = nullptr;
 	}
 
 	const double currentTime = getElapsedSeconds();
-	const int maxBatchesToSend = min((int)mBatchQueue.size(), mMaxBatchesPerCycle);
+	const int maxBatchesToSend = flush ? mBatchQueue.size() : min((int)mBatchQueue.size(), mMaxBatchesPerCycle);
 	int numHitsSent = 0;
 	int numBatchesSent = 0;
 
@@ -164,12 +176,12 @@ void AnalyticsClient::processBatches() {
 		auto batch = mBatchQueue.front();
 
 		const double timeSinceLastAttempt = currentTime - batch->getTimeOfLastSendAttempt();
-		if (timeSinceLastAttempt < batch->getDelayUntilNextSendAttempt()) {
+		if (!flush && timeSinceLastAttempt < batch->getDelayUntilNextSendAttempt()) {
 			continue; // wait until we can try again
 		}
 
 		// send batch
-		sendBatch(batch);
+		sendBatch(batch, flush);
 
 		numBatchesSent++;
 		numHitsSent += (int)batch->numHits();
@@ -184,10 +196,10 @@ void AnalyticsClient::processBatches() {
 	}
 }
 
-void AnalyticsClient::sendBatch(GABatchRef batch) {
-	mThreadManager->addTask([=] {
+void AnalyticsClient::sendBatch(GABatchRef batch, bool blocking) {
+	auto task = [=] {
 		const string body = batch->getPayloadString();
-		
+
 		utils::UrlRequest::Options options;
 		options.method = utils::UrlRequest::Method::POST;
 		options.setBodyText(body);
@@ -196,11 +208,16 @@ void AnalyticsClient::sendBatch(GABatchRef batch) {
 		// save and send request
 		lock_guard<mutex> lock(mRequestMutex);
 		mPendingRequests.insert(request);
-		CI_LOG_D(body);
-		request->connect([=] (utils::UrlRequestRef request) {
+		request->connect([=](utils::UrlRequestRef request) {
 			handleBatchRequestCompleted(batch, request);
 		});
-	});
+	};
+
+	if (blocking) {
+		task();
+	} else {
+		mThreadManager->addTask(task);
+	}
 }
 
 void AnalyticsClient::handleBatchRequestCompleted(GABatchRef batch, utils::UrlRequestRef request) {
