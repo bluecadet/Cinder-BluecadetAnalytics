@@ -79,10 +79,10 @@ public:
 	
 	
 	//! Tracks a single event. May batch this hit with other hits and delay actually sending it.
-	void trackEvent(const std::string & category, const std::string & action, const std::string & label = "", const int value = -1);
+	void trackEvent(const std::string & category, const std::string & action, const std::string & label = "", const int value = -1, const std::string & customQuery = "");
 
 	//! Tracks a single screen view. May batch this hit with other hits and delay actually sending it.
-	void trackScreenView(const std::string & screenName);
+	void trackScreenView(const std::string & screenName, const std::string & customQuery = "");
 
 	//! Tracks an instance of a base hit type and batches it with other hits if possible
 	void trackHit(GAHitRef hit);

@@ -91,13 +91,13 @@ void AnalyticsClient::destroy() {
 	mCurrentBatch = nullptr;
 }
 
-void AnalyticsClient::trackEvent(const string & category, const string & action, const string & label, const int value) {
-	GAEventRef event = make_shared<GAEvent>(mAppName, mGaId, mClientId, mGaApiVersion, category, action, label, value);
+void AnalyticsClient::trackEvent(const string & category, const string & action, const string & label, const int value, const std::string & customQuery) {
+	GAEventRef event = make_shared<GAEvent>(mAppName, mGaId, mClientId, mGaApiVersion, category, action, label, value, customQuery);
 	trackHit(event);
 }
 
-void AnalyticsClient::trackScreenView(const string & screenName) {
-	GAScreenViewRef screenView = make_shared<GAScreenView>(mAppName, mGaId, mClientId, mGaApiVersion, screenName);
+void AnalyticsClient::trackScreenView(const string & screenName, const std::string & customQuery) {
+	GAScreenViewRef screenView = make_shared<GAScreenView>(mAppName, mGaId, mClientId, mGaApiVersion, screenName, customQuery);
 	trackHit(screenView);
 }
 
@@ -196,7 +196,7 @@ void AnalyticsClient::sendBatch(GABatchRef batch) {
 		// save and send request
 		lock_guard<mutex> lock(mRequestMutex);
 		mPendingRequests.insert(request);
-
+		CI_LOG_D(body);
 		request->connect([=] (utils::UrlRequestRef request) {
 			handleBatchRequestCompleted(batch, request);
 		});

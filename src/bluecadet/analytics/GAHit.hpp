@@ -49,13 +49,14 @@ public:
 		End
 	};
 
-	GAHit(std::string appName, std::string trackingId, std::string clientId, std::string version, std::string type) :
+	GAHit(const std::string & appName, const std::string & trackingId, const std::string & clientId, const std::string & version, const std::string & type, const std::string & customQuery = "") :
 		mTimestamp(ci::app::getElapsedSeconds()),
 		mAppName(appName),
 		mTrackingId(trackingId),
 		mClientId(clientId),
 		mVersion(version),
-		mType(type)
+		mType(type),
+		mCustomQuery(customQuery)
 	{}
 	virtual ~GAHit() {};
 
@@ -74,6 +75,7 @@ public:
 
 		// Optional values
 		if (!mAppVersion.empty())		result += "&av=" + ci::Url::encode(mAppVersion);
+		if (!mCustomQuery.empty())		result += mCustomQuery;
 		if (mAnonymizeIp)				result += "&aip=1";
 		if (mSessionControl == Start)	result += "&sc=start";
 		if (mSessionControl == End)		result += "&sc=end";
@@ -91,6 +93,7 @@ public:
 	const std::string	mType;			//! Mandatory GA Hit Type ('pageview', 'screenview', 'event', 'transaction', 'item', 'social', 'exception' or 'timing')
 
 	// Additional optional values
+	std::string			mCustomQuery	= "";		//! Optional custom query, e.g. to append custom dimensions: '&cd1=first-dim&cd2=second-dim'
 	std::string			mAppVersion		= "";		//! Optional app version (shows up in reports)
 	bool				mAnonymizeIp	= false;
 	bool				mCacheBuster	= true;
