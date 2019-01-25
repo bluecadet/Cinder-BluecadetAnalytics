@@ -196,7 +196,6 @@ void AnalyticsClient::sendBatch(GABatchRef batch) {
 		// save and send request
 		lock_guard<mutex> lock(mRequestMutex);
 		mPendingRequests.insert(request);
-		CI_LOG_D(body);
 		request->connect([=] (utils::UrlRequestRef request) {
 			handleBatchRequestCompleted(batch, request);
 		});
