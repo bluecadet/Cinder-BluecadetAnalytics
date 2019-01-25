@@ -92,12 +92,12 @@ void AnalyticsClient::destroy() {
 }
 
 void AnalyticsClient::trackEvent(const string & category, const string & action, const string & label, const int value, const std::string & customQuery) {
-	GAEventRef event = make_shared<GAEvent>(mAppName, mGaId, mClientId, mGaApiVersion, category, action, label, value, mCustomQuery + customQuery);
+	GAEventRef event = make_shared<GAEvent>(mAppName, mGaId, mClientId, mGaApiVersion, category, action, label, value, customQuery);
 	trackHit(event);
 }
 
 void AnalyticsClient::trackScreenView(const string & screenName, const std::string & customQuery) {
-	GAScreenViewRef screenView = make_shared<GAScreenView>(mAppName, mGaId, mClientId, mGaApiVersion, screenName, mCustomQuery + customQuery);
+	GAScreenViewRef screenView = make_shared<GAScreenView>(mAppName, mGaId, mClientId, mGaApiVersion, screenName, customQuery);
 	trackHit(screenView);
 }
 
@@ -106,6 +106,7 @@ void AnalyticsClient::trackHit(GAHitRef hit) {
 	// optional hit parameters
 	hit->mAppVersion = mAppVersion;
 	hit->mCacheBuster = mCacheBusterEnabled;
+	hit->mCustomQuery += mCustomQuery;
 
 	// handle session control to stay within quotas
 	if (mAutoSessionsEnabled) {
@@ -192,7 +193,7 @@ void AnalyticsClient::sendBatch(GABatchRef batch) {
 		options.method = utils::UrlRequest::Method::POST;
 		options.setBodyText(body);
 		utils::UrlRequestRef request = utils::UrlRequest::create(mGaBaseUrl, mGaBatchUri, options);
-
+		
 		// save and send request
 		lock_guard<mutex> lock(mRequestMutex);
 		mPendingRequests.insert(request);

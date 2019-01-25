@@ -78,7 +78,7 @@ void BasicSampleApp::setup() {
 
 	// Setup needs to be called before tracking hits.
 	AnalyticsClient::getInstance()->setup(clientId, gaId, appName, appVersion);
-	AnalyticsClient::getInstance()->setCustomQuery("&cb1=DefaultCustomQueryFromClient");
+	AnalyticsClient::getInstance()->setCustomQuery("&cd3=DefaultCustomQueryFromClient");
 
 	setupParams();
 }
