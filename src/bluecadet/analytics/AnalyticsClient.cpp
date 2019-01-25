@@ -45,7 +45,7 @@ namespace bluecadet {
 namespace analytics {
 
 AnalyticsClient::AnalyticsClient() :
-	mThreadManager(new utils::ThreadManager()),
+	mThreadManager(make_shared<utils::ThreadManager>()),
 	mCacheBusterEnabled(true),
 	mAutoSessionsEnabled(true),
 	mMaxHitsPerSession(400), // stay below 500 events per session limit
@@ -92,12 +92,12 @@ void AnalyticsClient::destroy() {
 }
 
 void AnalyticsClient::trackEvent(const string & category, const string & action, const string & label, const int value) {
-	GAEventRef event = GAEventRef(new GAEvent(mAppName, mGaId, mClientId, mGaApiVersion, category, action, label, value));
+	GAEventRef event = make_shared<GAEvent>(mAppName, mGaId, mClientId, mGaApiVersion, category, action, label, value);
 	trackHit(event);
 }
 
 void AnalyticsClient::trackScreenView(const string & screenName) {
-	GAScreenViewRef screenView = GAScreenViewRef(new GAScreenView(mAppName, mGaId, mClientId, mGaApiVersion, screenName));
+	GAScreenViewRef screenView = make_shared<GAScreenView>(mAppName, mGaId, mClientId, mGaApiVersion, screenName);
 	trackHit(screenView);
 }
 
@@ -136,7 +136,7 @@ void AnalyticsClient::trackHit(GAHitRef hit) {
 			}
 
 			// new batch
-			mCurrentBatch = GABatchRef(new GABatch());
+			mCurrentBatch = make_shared<GABatch>();
 
 		}
 
