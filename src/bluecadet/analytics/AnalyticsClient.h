@@ -79,9 +79,11 @@ public:
 	
 	
 	//! Tracks a single event. May batch this hit with other hits and delay actually sending it.
+	//! Any custom query will be added to this client's default custom query.
 	void trackEvent(const std::string & category, const std::string & action, const std::string & label = "", const int value = -1, const std::string & customQuery = "");
 
 	//! Tracks a single screen view. May batch this hit with other hits and delay actually sending it.
+	//! Any custom query will be added to this client's default custom query.
 	void trackScreenView(const std::string & screenName, const std::string & customQuery = "");
 
 	//! Tracks an instance of a base hit type and batches it with other hits if possible
@@ -108,7 +110,10 @@ public:
 	std::string getAppVersion() const { return mAppVersion; }
 	void setAppVersion(const std::string appVersion) { mAppVersion = appVersion; }
 	
-	
+	//! Additional query parameters to be appended to each hit payload (Optional).
+	//! E.g. &cd1=myCustomDimensionValue
+	std::string getCustomQuery() const { return mCustomQuery; }
+	void setCustomQuery(const std::string customQuery) { mCustomQuery = customQuery; }
 	
 	//! Automatically start/end sessions to stay within hits per session quota. Defaults to true.
 	//! See https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters#sc)
@@ -171,7 +176,7 @@ protected:
 	std::string				mClientId;		//! Required client ID formatted as UUID according to http://www.ietf.org/rfc/rfc4122.txt
 	std::string				mGaBaseUrl	= "www.google-analytics.com";
 	std::string				mGaBatchUri	= "/batch";
-	
+	std::string				mCustomQuery = "";
 };
 
 } // analytics namespace

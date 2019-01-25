@@ -92,12 +92,12 @@ void AnalyticsClient::destroy() {
 }
 
 void AnalyticsClient::trackEvent(const string & category, const string & action, const string & label, const int value, const std::string & customQuery) {
-	GAEventRef event = make_shared<GAEvent>(mAppName, mGaId, mClientId, mGaApiVersion, category, action, label, value, customQuery);
+	GAEventRef event = make_shared<GAEvent>(mAppName, mGaId, mClientId, mGaApiVersion, category, action, label, value, mCustomQuery + customQuery);
 	trackHit(event);
 }
 
 void AnalyticsClient::trackScreenView(const string & screenName, const std::string & customQuery) {
-	GAScreenViewRef screenView = make_shared<GAScreenView>(mAppName, mGaId, mClientId, mGaApiVersion, screenName, customQuery);
+	GAScreenViewRef screenView = make_shared<GAScreenView>(mAppName, mGaId, mClientId, mGaApiVersion, screenName, mCustomQuery + customQuery);
 	trackHit(screenView);
 }
 
