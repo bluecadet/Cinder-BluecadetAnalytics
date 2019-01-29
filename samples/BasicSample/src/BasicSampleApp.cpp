@@ -34,13 +34,15 @@
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
 #include "cinder/params/Params.h"
+#include "cinder/log.h"
 
 #include "bluecadet/analytics/AnalyticsClient.h"
+#include "cinder/Utilities.h"
 
  // Used to generate UUID; You can also generate one offline and hard code it in your app.
-#include <boost/uuid/uuid.hpp>
-#include <boost/uuid/uuid_generators.hpp>
-#include <boost/uuid/uuid_io.hpp>
+//#include <boost/uuid/uuid.hpp>
+//#include <boost/uuid/uuid_generators.hpp>
+//#include <boost/uuid/uuid_io.hpp>
 
 using namespace ci;
 using namespace ci::app;
@@ -48,7 +50,7 @@ using namespace std;
 
 using namespace bluecadet::analytics;
 
-class AnalyticsSampleApp : public App {
+class BasicSampleApp : public App {
 public:
 	void setup() override;
 	void setupParams();
@@ -58,13 +60,15 @@ public:
 	params::InterfaceGlRef mParams;
 };
 
-void AnalyticsSampleApp::setup() {
+void BasicSampleApp::setup() {
 
-	// Random UUID according to RFC 4122 spec (required). Can be hard coded into your app or randomly generated as below (boost optional).
-	string clientId = boost::uuids::to_string(boost::uuids::random_generator()());
-
+	// UUID according to RFC 4122 spec (required). Can be hard coded into your app or randomly generated as below (boost optional).
+	//string clientId = "00000000-0000-0000-0000-000000000000";
+	//string clientId = boost::uuids::to_string(boost::uuids::random_generator()());
+	string clientId = trim(loadString(loadUrl("https://www.uuidgenerator.net/api/version1"))); // trim since uuid gen uses extra characters
+	
 	// Change this to your app's GA ID (required). Important: GA API doesn't return any reporting errors, so make sure to validate your id.
-	string gaId = "UA-00000000-0";
+	string gaId = "UA-74778167-1";
 
 	// The name of your app (required).
 	string appName = "Analytics Sample";
@@ -74,12 +78,14 @@ void AnalyticsSampleApp::setup() {
 
 	// Setup needs to be called before tracking hits.
 	AnalyticsClient::getInstance()->setup(clientId, gaId, appName, appVersion);
+	AnalyticsClient::getInstance()->setCustomQuery("&cd3=DefaultCustomQueryFromClient");
 
 	setupParams();
 }
 
-void AnalyticsSampleApp::setupParams() {
-	mParams = params::InterfaceGl::create("AnalyticsSampleApp", ivec2(256, 256));
+void BasicSampleApp::setupParams() {
+	mParams = params::InterfaceGl::create("BasicSampleApp", getWindowSize());
+	mParams->setPosition(ivec2(0));
 
 	mParams->addText("Config");
 	mParams->addParam<string>("Client ID", [](string v) { AnalyticsClient::getInstance()->setClientId(v); }, [] { return AnalyticsClient::getInstance()->getClientId(); });
@@ -91,6 +97,12 @@ void AnalyticsSampleApp::setupParams() {
 	mParams->addText("Tracking");
 	mParams->addButton("Track 1 Event", [] {
 		AnalyticsClient::getInstance()->trackEvent("Test Category", "Test Action");
+	});
+	mParams->addButton("Track 1 Event with Custom Dimensions A", [] {
+		AnalyticsClient::getInstance()->trackEvent("Test Category", "Test Action", "", -1, "&cd1=first-a&cd2=second-a");
+	});
+	mParams->addButton("Track 1 Event with Custom Dimensions B", [] {
+		AnalyticsClient::getInstance()->trackEvent("Test Category", "Test Action", "", -1, "&cd1=first-b&cd2=second-b");
 	});
 	mParams->addButton("Track 150 Events", [] {
 		for (int i = 0; i < 150; ++i) {
@@ -115,12 +127,12 @@ void AnalyticsSampleApp::setupParams() {
 	mParams->addButton("Quit", [this] { quit(); }, "key=q");
 }
 
-void AnalyticsSampleApp::update() {
+void BasicSampleApp::update() {
 }
 
-void AnalyticsSampleApp::draw() {
+void BasicSampleApp::draw() {
 	gl::clear(Color(0, 0, 0));
 	mParams->draw();
 }
 
-CINDER_APP(AnalyticsSampleApp, RendererGl)
+CINDER_APP(BasicSampleApp, RendererGl)

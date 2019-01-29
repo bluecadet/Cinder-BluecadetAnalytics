@@ -43,8 +43,8 @@ typedef std::shared_ptr<class GAScreenView> GAScreenViewRef;
 
 class GAScreenView : public GAHit {
 public:
-	GAScreenView(std::string appName, std::string trackingId, std::string clientId, std::string version, std::string screenName) :
-		GAHit(appName, trackingId, clientId, version, "screenview"),
+	GAScreenView(const std::string & appName, const std::string & trackingId, const std::string & clientId, const std::string & version, const std::string & screenName, const std::string & customQuery = "") :
+		GAHit(appName, trackingId, clientId, version, "screenview", customQuery),
 		mScreenName(screenName)
 	{}
 	virtual ~GAScreenView() {};

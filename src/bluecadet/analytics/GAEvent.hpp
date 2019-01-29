@@ -43,8 +43,9 @@ typedef std::shared_ptr<class GAEvent> GAEventRef;
 
 class GAEvent : public GAHit {
 public:
-	GAEvent(std::string appName, std::string trackingId, std::string clientId, std::string version, std::string category, std::string action, std::string label = "", int value = -1) :
-		GAHit(appName, trackingId, clientId, version, "event"),
+	GAEvent(const std::string & appName, const std::string & trackingId, const std::string & clientId, const std::string & version,
+		const std::string & category, const std::string & action, const std::string & label = "", int value = -1, const std::string & customQuery = "") :
+		GAHit(appName, trackingId, clientId, version, "event", customQuery),
 		mCategory(category),
 		mAction(action),
 		mLabel(label),
