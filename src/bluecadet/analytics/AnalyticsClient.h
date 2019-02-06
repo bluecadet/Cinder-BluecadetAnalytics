@@ -86,6 +86,9 @@ public:
 	//! Any custom query will be added to this client's default custom query.
 	void trackScreenView(const std::string & screenName, const std::string & customQuery = "");
 
+	//! Tracks an instance of a user timing hit and batches it with other hits if possible. Time is in MILLISECONDS
+	void trackUserTiming(const std::string & category, const std::string & variable, const int timeInMs, const std::string & label = "", const std::string & customQuery = "");
+
 	//! Tracks an instance of a base hit type and batches it with other hits if possible
 	void trackHit(GAHitRef hit);
 	
@@ -113,7 +116,7 @@ public:
 	//! Additional query parameters to be appended to each hit payload (Optional).
 	//! E.g. &cd1=myCustomDimensionValue
 	std::string getCustomQuery() const { return mCustomQuery; }
-	void setCustomQuery(const std::string customQuery) { mCustomQuery = customQuery; }
+	void setCustomQuery(const std::string customQuery) { mCustomQuery = customQuery; }  
 	
 	//! Automatically start/end sessions to stay within hits per session quota. Defaults to true.
 	//! See https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters#sc)
