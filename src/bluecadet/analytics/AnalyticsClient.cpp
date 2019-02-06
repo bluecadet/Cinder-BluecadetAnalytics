@@ -35,6 +35,7 @@
 #include "cinder/Log.h"
 
 #include "GAEvent.hpp"
+#include "GAUserTiming.hpp"
 #include "GAScreenView.hpp"
 
 using namespace ci;
@@ -99,6 +100,11 @@ void AnalyticsClient::trackEvent(const string & category, const string & action,
 void AnalyticsClient::trackScreenView(const string & screenName, const std::string & customQuery) {
 	GAScreenViewRef screenView = make_shared<GAScreenView>(mAppName, mGaId, mClientId, mGaApiVersion, screenName, customQuery);
 	trackHit(screenView);
+}
+
+void AnalyticsClient::trackUserTiming(const std::string & category, const std::string & variable, const int timeInMs, const std::string & label, const std::string & customQuery) {
+	GAUserTimingRef userTiming = make_shared<GAUserTiming>(mAppName, mGaId, mClientId, mGaApiVersion, category, variable, timeInMs, label, customQuery);
+	trackHit(userTiming);
 }
 
 void AnalyticsClient::trackHit(GAHitRef hit) {
