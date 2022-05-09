@@ -44,7 +44,7 @@ typedef std::shared_ptr<class GABatch> GABatchRef;
 class GABatch {
 public:
 
-	static const size_t MAX_NUM_HITS	= 20;			//! 20 items max per batch
+	static const size_t MAX_NUM_HITS	= 25;			//! 20 items max per batch
 	//static const size_t MAX_HIT_SIZE	= 8 * 1014;		//! 8kb max per item
 	//static const size_t MAX_BATCH_SIZE= 16 * 1024;	//! 16kb max per batch
 	static const int MAX_DELAY_BETWEEN_ATTEMPTS = 300;	//! How long in seconds to wait until re-attempting to send this batch
@@ -53,11 +53,26 @@ public:
 	~GABatch() {};
 
 	std::string getPayloadString() const {
+		//std::string result = "";
+		//for (auto hit : mHits) {
+		//	if (!result.empty()) result += "\n";
+		//	result += hit->getPayloadString();
+		//}
+
 		std::string result = "";
+
 		for (auto hit : mHits) {
-			if (!result.empty()) result += "\n";
+			if (result.empty()) {
+				result += "[";
+			} else {
+				result += ",";
+			}
+
 			result += hit->getPayloadString();
 		}
+
+		result += "]";
+
 		return result;
 	};
 

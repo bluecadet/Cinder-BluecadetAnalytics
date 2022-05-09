@@ -41,6 +41,8 @@
 using namespace ci;
 using namespace ci::app;
 using namespace std;
+using namespace firebase;
+using namespace firebase::analytics;
 
 namespace bluecadet {
 namespace analytics {
@@ -48,7 +50,7 @@ namespace analytics {
 AnalyticsClient::AnalyticsClient() :
 	mThreadManager(make_shared<utils::ThreadManager>()),
 	mCacheBusterEnabled(true),
-	mAutoSessionsEnabled(true),
+	mAutoSessionsEnabled(false),
 	mMaxHitsPerSession(400), // stay below 500 events per session limit
 	mHitsInCurrentSession(0),
 	mGaApiVersion("1")
@@ -68,6 +70,24 @@ void AnalyticsClient::setup(string clientId, string gaId, string appName, string
 	mMaxBatchAge = maxBatchAge;
 	mMaxBatchesPerCycle = maxBatchesPerCycle;
 	mThreadManager->setup(numThreads);
+
+	firebase::AppOptions appOptions;
+	appOptions.set_api_key("AIzaSyApxFqt9vrzXcAVu1zH4BCcl6exc-NK5co");
+	appOptions.set_app_id("1:989791331407:web:89495b368374429d0db63a");
+	appOptions.set_project_id("bluecadet-sandbox");
+	//appOptions.set_ga_tracking_id("313329358");
+	//appOptions.set_messaging_sender_id("012345678901");
+
+	firebase::analytics::Initialize(*firebase::App::Create(appOptions));
+	Future<string> future = GetAnalyticsInstanceId();
+	
+	future.OnCompletion([](const Future<string>& completed_future) {
+		if (completed_future.error() == 0) {
+			CI_LOG_I("AnalyticsInstanceId: " << *completed_future.result());
+		} else {
+			CI_LOG_I("Error %d: %s" << completed_future.error() << completed_future.error_message());
+		}
+	});
 	
 	CI_LOG_I("Client set up with GA ID '" << mGaId << "' and client ID '" << mClientId << "'");
 	
@@ -192,13 +212,34 @@ void AnalyticsClient::processBatches() {
 }
 
 void AnalyticsClient::sendBatch(GABatchRef batch) {
+	//CI_LOG_I("Log event");
+	//LogEvent("Test Event");
+
 	mThreadManager->addTask([=] {
-		const string body = batch->getPayloadString();
-		
+		//const string body = batch->getPayloadString();
+
+		string body = R"({ "app_instance_id": ")" + *GetAnalyticsInstanceIdLastResult().result() +R"(", "events":)";
+		body += batch->getPayloadString();
+		body += "}";
+
+		//CI_LOG_I(batch->getPayloadString());
+		CI_LOG_I(body);
+
 		utils::UrlRequest::Options options;
 		options.method = utils::UrlRequest::Method::POST;
 		options.setBodyText(body);
-		utils::UrlRequestRef request = utils::UrlRequest::create(mGaBaseUrl, mGaBatchUri, options);
+		//options.setBodyText("{}");
+		
+		//utils::UrlRequestRef request = utils::UrlRequest::create(mGaBaseUrl, mGaBatchUri, options);
+
+		string baseUrl = R"(www.google-analytics.com)";
+		string batchUri = R"(/mp/collect?firebase_app_id=1:989791331407:web:89495b368374429d0db63a&api_secret=oirrqOJSRcuehuxiYFlUPg)";
+		//string batchUri = R"(/debug/mp/collect?firebase_app_id=1:989791331407:web:89495b368374429d0db63a&api_secret=oirrqOJSRcuehuxiYFlUPg)";
+
+		utils::UrlRequestRef request = utils::UrlRequest::create(baseUrl, batchUri, options);
+		
+		//CI_LOG_I("Body: ");
+		//CI_LOG_I(request->getBodyText());
 		
 		// save and send request
 		lock_guard<mutex> lock(mRequestMutex);
@@ -215,6 +256,9 @@ void AnalyticsClient::handleBatchRequestCompleted(GABatchRef batch, utils::UrlRe
 		// increase delay until next attempt
 		batch->setTimeOfLastSendAttempt(getElapsedSeconds());
 		batch->increaseDelayUntilNextSendAttempt();
+
+		CI_LOG_I(request->getHttpResponse().getStatusCode());
+		CI_LOG_I(request->getHttpResponse().toString());
 		
 		const string reason = request ? request->getHttpResponse().getReason() : "(unknown reason)";
 		CI_LOG_W("Batch failed to send: " << reason <<

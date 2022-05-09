@@ -35,6 +35,7 @@
 #include "GABatch.hpp"
 #include "utils/ThreadManager.h"
 #include "utils/UrlRequest.h"
+#include "firebase/analytics.h"
 
 namespace bluecadet {
 namespace analytics {
@@ -180,6 +181,8 @@ protected:
 	std::string				mGaBaseUrl	= "www.google-analytics.com";
 	std::string				mGaBatchUri	= "/batch";
 	std::string				mCustomQuery = "";
+
+	std::string				mAppInstanceId;
 };
 
 } // analytics namespace

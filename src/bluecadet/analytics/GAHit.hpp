@@ -61,25 +61,27 @@ public:
 	virtual ~GAHit() {};
 
 	virtual std::string getPayloadString() const {
-		// Delta time since hit in miliseconds
-		int queueTime = (int)round((ci::app::getElapsedSeconds() - mTimestamp) * 1000.0);
+		//// Delta time since hit in miliseconds
+		//int queueTime = (int)round((ci::app::getElapsedSeconds() - mTimestamp) * 1000.0);
 
-		// Mandatory values
-		std::string result =
-			"v=" + mVersion +						// API version
-			"&an=" + ci::Url::encode(mAppName) +	// App Name
-			"&tid=" + mTrackingId +					// Tracking ID
-			"&cid=" + mClientId +					// Client ID
-			"&t=" + mType +							// Hit type
-			"&qt=" + std::to_string(queueTime);		// Queue time 
+		//// Mandatory values
+		//std::string result =
+		//	"v=" + mVersion +						// API version
+		//	"&an=" + ci::Url::encode(mAppName) +	// App Name
+		//	"&tid=" + mTrackingId +					// Tracking ID
+		//	"&cid=" + mClientId +					// Client ID
+		//	"&t=" + mType +							// Hit type
+		//	"&qt=" + std::to_string(queueTime);		// Queue time
 
-		// Optional values
-		if (!mAppVersion.empty())		result += "&av=" + ci::Url::encode(mAppVersion);
-		if (!mCustomQuery.empty())		result += mCustomQuery;
-		if (mAnonymizeIp)				result += "&aip=1";
-		if (mSessionControl == Start)	result += "&sc=start";
-		if (mSessionControl == End)		result += "&sc=end";
-		if (mCacheBuster)				result += "&z=" + std::to_string(rand()); // should be final parameter
+		//// Optional values
+		//if (!mAppVersion.empty())		result += "&av=" + ci::Url::encode(mAppVersion);
+		//if (!mCustomQuery.empty())		result += mCustomQuery;
+		//if (mAnonymizeIp)				result += "&aip=1";
+		//if (mSessionControl == Start)	result += "&sc=start";
+		//if (mSessionControl == End)		result += "&sc=end";
+		//if (mCacheBuster)				result += "&z=" + std::to_string(rand()); // should be final parameter
+
+		std::string result = R"({ "name": "ui_change_year", "params": { "year": 2022 } })";
 
 		return result;
 	}

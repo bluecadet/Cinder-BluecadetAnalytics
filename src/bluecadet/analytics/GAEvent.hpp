@@ -56,12 +56,12 @@ public:
 	virtual std::string getPayloadString() const override {
 		std::string result = GAHit::getPayloadString();
 
-		result += "&ec=" + ci::Url::encode(mCategory);	// Event category
-		result += "&ea=" + ci::Url::encode(mAction);	// Event action
+		//result += "&ec=" + ci::Url::encode(mCategory);	// Event category
+		//result += "&ea=" + ci::Url::encode(mAction);	// Event action
 
-		// Optional values
-		if (!mLabel.empty())	result += "&el=" + ci::Url::encode(mLabel);
-		if (mValue >= 0)		result += "&ev=" + std::to_string(mValue);
+		//// Optional values
+		//if (!mLabel.empty())	result += "&el=" + ci::Url::encode(mLabel);
+		//if (mValue >= 0)		result += "&ev=" + std::to_string(mValue);
 
 		return result;
 	}
